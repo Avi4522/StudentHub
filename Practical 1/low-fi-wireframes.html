@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>StudentHub Portal — Low-Fidelity Wireframes</title>
+<style>
+  :root{--line:#8a8a8a;--bg:#f4f4f4;--box:#ffffff;--text:#333;}
+  *{box-sizing:border-box;}
+  body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);margin:0;padding:0;}
+  header{background:#222;color:#fff;padding:14px 20px;}
+  header h1{margin:0;font-size:18px;}
+  header p{margin:4px 0 0;font-size:12px;color:#bbb;}
+  nav{display:flex;flex-wrap:wrap;gap:6px;padding:10px 16px;background:#ddd;border-bottom:2px dashed var(--line);}
+  nav button{background:#fff;border:1px solid var(--line);padding:6px 10px;font-size:12px;cursor:pointer;border-radius:3px;}
+  nav button.active{background:#333;color:#fff;}
+  .screen{display:none;padding:20px;max-width:960px;margin:0 auto;}
+  .screen.active{display:block;}
+  .frame{border:2px solid var(--line);background:var(--box);padding:16px;position:relative;}
+  .frame::before{content:attr(data-label);position:absolute;top:-11px;left:10px;background:var(--bg);padding:0 6px;font-size:11px;color:#555;font-weight:bold;}
+  .box{border:1.5px dashed var(--line);padding:10px;margin:8px 0;font-size:12px;color:#555;text-align:center;}
+  .row{display:flex;gap:8px;}
+  .row > .box{flex:1;}
+  .logo{width:70px;height:24px;border:1.5px solid var(--line);text-align:center;font-size:10px;line-height:24px;}
+  .navbar{display:flex;justify-content:space-between;align-items:center;border:1.5px solid var(--line);padding:8px;margin-bottom:10px;font-size:11px;}
+  .navlinks{display:flex;gap:10px;}
+  .navlinks span{border:1px solid var(--line);padding:3px 6px;}
+  .sidebar{border:1.5px dashed var(--line);padding:8px;font-size:11px;width:140px;}
+  .sidebar div{border:1px solid var(--line);margin:4px 0;padding:5px;text-align:center;}
+  .content-area{flex:1;padding:0 10px;}
+  .card{border:1px solid var(--line);padding:8px;font-size:11px;margin:6px 0;}
+  .btn{display:inline-block;border:1.5px solid #333;padding:5px 12px;font-size:11px;background:#eee;}
+  table.wf{width:100%;border-collapse:collapse;font-size:11px;}
+  table.wf td, table.wf th{border:1px solid var(--line);padding:6px;text-align:left;}
+  .placeholder-img{border:1.5px dashed var(--line);height:60px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#888;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>StudentHub Portal — Low-Fidelity Wireframes</h1>
+  <p>Grayscale, box-level layout sketches. Click a page name below to preview.</p>
+</header>
+
+<nav id="nav"></nav>
+
+<!-- ============ SCREENS ============ -->
+<div id="screens"></div>
+
+<script>
+const pages = [
+  "Landing","Login","Register","Student Dashboard","Faculty Dashboard",
+  "Admin Dashboard","Course Catalog","Course Detail","Attendance","Grades",
+  "Assignments","Timetable","Announcements","Fees","Profile"
+];
+
+const nav = document.getElementById('nav');
+const screensWrap = document.getElementById('screens');
+
+pages.forEach((p,i)=>{
+  const btn = document.createElement('button');
+  btn.textContent = p;
+  btn.onclick = ()=>show(i);
+  nav.appendChild(btn);
+});
+
+function show(i){
+  document.querySelectorAll('nav button').forEach((b,idx)=>b.classList.toggle('active', idx===i));
+  document.querySelectorAll('.screen').forEach((s,idx)=>s.classList.toggle('active', idx===i));
+}
+
+const templates = {
+"Landing": `
+<div class="frame" data-label="Landing Page">
+  <div class="navbar"><div class="logo">LOGO</div><div class="navlinks"><span>Login</span><span>Register</span></div></div>
+  <div class="box" style="padding:30px;">HERO BANNER — "Welcome to StudentHub" + tagline</div>
+  <div class="row">
+    <div class="box">Feature: Attendance</div>
+    <div class="box">Feature: Grades</div>
+    <div class="box">Feature: Timetable</div>
+  </div>
+  <div class="box">Footer — links, contact, copyright</div>
+</div>`,
+
+"Login": `
+<div class="frame" data-label="Login Page">
+  <div class="logo">LOGO</div>
+  <div class="box" style="max-width:280px;margin:20px auto;">
+    Email / Username field<br><br>
+    Password field<br><br>
+    <span class="btn">Login</span><br><br>
+    <small>Forgot password? | Register</small>
+  </div>
+</div>`,
+
+"Register": `
+<div class="frame" data-label="Registration Page">
+  <div class="logo">LOGO</div>
+  <div class="box" style="max-width:320px;margin:20px auto;">
+    Full Name field<br><br>
+    Email field<br><br>
+    Role select: Student / Faculty<br><br>
+    Password field<br><br>
+    Confirm Password field<br><br>
+    <span class="btn">Create Account</span>
+  </div>
+</div>`,
+
+"Student Dashboard": `
+<div class="frame" data-label="Student Dashboard">
+  <div class="navbar"><div class="logo">LOGO</div><div class="navlinks"><span>Courses</span><span>Attendance</span><span>Grades</span><span>Timetable</span><span>Fees</span><span>Profile</span></div></div>
+  <div class="row">
+    <div class="sidebar">
+      <div>Dashboard</div><div>Courses</div><div>Attendance</div><div>Grades</div>
+      <div>Assignments</div><div>Timetable</div><div>Announcements</div><div>Fees</div>
+      <div>Library</div><div>Forum</div><div>Profile</div>
+    </div>
+    <div class="content-area">
+      <div class="row">
+        <div class="box">Attendance %<br>92%</div>
+        <div class="box">Pending Assignments<br>3</div>
+        <div class="box">Fee Status<br>Paid</div>
+      </div>
+      <div class="card">Announcement: Midterm schedule released</div>
+      <div class="card">Upcoming: Assignment due Fri — CS201</div>
+      <div class="card">Today's classes — Timetable snippet</div>
+    </div>
+  </div>
+</div>`,
+
+"Faculty Dashboard": `
+<div class="frame" data-label="Faculty Dashboard">
+  <div class="navbar"><div class="logo">LOGO</div><div class="navlinks"><span>My Courses</span><span>Timetable</span><span>Profile</span></div></div>
+  <div class="row">
+    <div class="sidebar">
+      <div>Dashboard</div><div>My Courses</div><div>Attendance</div>
+      <div>Assignments</div><div>Announcements</div><div>Timetable</div><div>Profile</div>
+    </div>
+    <div class="content-area">
+      <div class="row">
+        <div class="box">Courses Taught<br>4</div>
+        <div class="box">Pending Grading<br>18</div>
+        <div class="box">Today's Classes<br>2</div>
+      </div>
+      <div class="card">CS201 — Mark today's attendance</div>
+      <div class="card">CS305 — 12 new assignment submissions</div>
+      <div class="card">Post new announcement — [ + New ]</div>
+    </div>
+  </div>
+</div>`,
+
+"Admin Dashboard": `
+<div class="frame" data-label="Admin Dashboard">
+  <div class="navbar"><div class="logo">LOGO</div><div class="navlinks"><span>Users</span><span>Courses</span><span>Timetable</span><span>Fees</span><span>Reports</span></div></div>
+  <div class="row">
+    <div class="sidebar">
+      <div>Dashboard</div><div>Manage Users</div><div>Manage Courses</div>
+      <div>Manage Timetable</div><div>Fee Records</div><div>Announcements</div><div>Reports</div>
+    </div>
+    <div class="content-area">
+      <div class="row">
+        <div class="box">Total Students<br>1,240</div>
+        <div class="box">Total Faculty<br>68</div>
+        <div class="box">Fee Defaulters<br>32</div>
+      </div>
+      <div class="card">Recent user registrations — table snippet</div>
+      <div class="card">System alerts / pending approvals</div>
+    </div>
+  </div>
+</div>`,
+
+"Course Catalog": `
+<div class="frame" data-label="Course Catalog">
+  <div class="navbar"><div class="logo">LOGO</div><div class="navlinks"><span>Search box</span><span>Filter: Dept</span><span>Filter: Semester</span></div></div>
+  <table class="wf">
+    <tr><th>Course Code</th><th>Title</th><th>Instructor</th><th>Credits</th><th>Action</th></tr>
+    <tr><td>CS201</td><td>Data Structures</td><td>Dr. Rao</td><td>4</td><td>[View]</td></tr>
+    <tr><td>CS305</td><td>Databases</td><td>Dr. Iyer</td><td>3</td><td>[View]</td></tr>
+    <tr><td>MA101</td><td>Calculus I</td><td>Dr. Shah</td><td>4</td><td>[View]</td></tr>
+  </table>
+</div>`,
+
+"Course Detail": `
+<div class="frame" data-label="Course Detail">
+  <div class="box" style="text-align:left;">Course Title: Data Structures (CS201) — Instructor: Dr. Rao</div>
+  <div class="navlinks" style="margin:10px 0;"><span>Syllabus</span><span>Materials</span><span>Assignments</span><span>Forum</span><span>Attendance</span></div>
+  <div class="card">Syllabus / description text block</div>
+  <div class="card">Materials — list of uploaded files</div>
+  <div class="card">Upcoming assignment: Assignment 3 — due Friday</div>
+</div>`,
+
+"Attendance": `
+<div class="frame" data-label="Attendance Page">
+  <div class="box">Course selector: [ CS201 ▾ ]   Date range: [ ]</div>
+  <table class="wf">
+    <tr><th>Date</th><th>Status</th></tr>
+    <tr><td>Jul 10</td><td>Present</td></tr>
+    <tr><td>Jul 11</td><td>Absent</td></tr>
+    <tr><td>Jul 12</td><td>Present</td></tr>
+  </table>
+  <div class="box">Overall Attendance: 92% (progress bar placeholder)</div>
+</div>`,
+
+"Grades": `
+<div class="frame" data-label="Grades & Results">
+  <div class="box">Semester selector: [ Fall 2026 ▾ ]</div>
+  <table class="wf">
+    <tr><th>Course</th><th>Assignment Avg</th><th>Midterm</th><th>Final</th><th>Grade</th></tr>
+    <tr><td>CS201</td><td>88%</td><td>76</td><td>—</td><td>A-</td></tr>
+    <tr><td>MA101</td><td>91%</td><td>82</td><td>—</td><td>A</td></tr>
+  </table>
+  <div class="box">GPA Summary: 3.7</div>
+</div>`,
+
+"Assignments": `
+<div class="frame" data-label="Assignments Page">
+  <div class="navlinks"><span>All</span><span>Pending</span><span>Submitted</span><span>Graded</span></div>
+  <div class="card">Assignment 3 — CS201 — Due Fri — [Submit File]</div>
+  <div class="card">Assignment 2 — MA101 — Submitted — Grade: 9/10</div>
+  <div class="card">Assignment 1 — CS201 — Graded — Feedback available</div>
+</div>`,
+
+"Timetable": `
+<div class="frame" data-label="Timetable Page">
+  <table class="wf">
+    <tr><th></th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr>
+    <tr><td>9–10</td><td>CS201</td><td></td><td>CS201</td><td></td><td>MA101</td></tr>
+    <tr><td>10–11</td><td></td><td>MA101</td><td></td><td>MA101</td><td></td></tr>
+    <tr><td>11–12</td><td>CS305</td><td></td><td>CS305</td><td></td><td></td></tr>
+  </table>
+</div>`,
+
+"Announcements": `
+<div class="frame" data-label="Announcements Page">
+  <div class="card">[Global] Midterm exam schedule released — Jul 14</div>
+  <div class="card">[CS201] Class rescheduled to 3 PM — Jul 12</div>
+  <div class="card">[Global] Library hours extended for finals — Jul 10</div>
+</div>`,
+
+"Fees": `
+<div class="frame" data-label="Fee Status & History">
+  <div class="row">
+    <div class="box">Current Due<br>$0</div>
+    <div class="box">Status<br>Paid</div>
+    <div class="box">Next Due Date<br>Aug 15</div>
+  </div>
+  <table class="wf">
+    <tr><th>Term</th><th>Amount</th><th>Paid On</th><th>Status</th></tr>
+    <tr><td>Spring 2026</td><td>$2,400</td><td>Jan 5</td><td>Paid</td></tr>
+    <tr><td>Fall 2025</td><td>$2,400</td><td>Aug 3</td><td>Paid</td></tr>
+  </table>
+</div>`,
+
+"Profile": `
+<div class="frame" data-label="Profile & Settings">
+  <div class="row">
+    <div class="placeholder-img" style="width:70px;">Photo</div>
+    <div class="content-area">
+      <div class="box">Name / Email / Role (read-only fields)</div>
+    </div>
+  </div>
+  <div class="box">Change Password</div>
+  <div class="box">Notification Preferences (toggles)</div>
+  <div class="btn">Save Changes</div>
+</div>`
+};
+
+pages.forEach((p,i)=>{
+  const div = document.createElement('div');
+  div.className = 'screen';
+  div.innerHTML = templates[p] || `<div class="frame" data-label="${p}">Wireframe placeholder</div>`;
+  screensWrap.appendChild(div);
+});
+
+show(0);
+</script>
+</body>
+</html>
