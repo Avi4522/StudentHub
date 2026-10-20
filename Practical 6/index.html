@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StudentHub - Practical 6: External JSON Data Rendering using Fetch API, Search, Filter, and Pagination">
+    <title>StudentHub - Practical 6: Fetch API, Search &amp; Filter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">&#127891;</span>
+                <span>Student Hub</span>
+            </a>
+            <div class="header-badges">
+                <span class="badge">Practical 6</span>
+                <span class="badge badge-accent">Fetch API &bull; JSON</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-wrapper">
+        <div class="portal-container">
+            <!-- Title Area -->
+            <div class="page-header">
+                <span class="subheading">ITUE203 Web Development Frameworks &bull; Practical 6</span>
+                <h1>Dynamic Campus Data Portal</h1>
+                <p>Consuming asynchronous JSON datasets via the Fetch API with client-side searching, multi-criteria filtering, sorting algorithms, and modular pagination.</p>
+            </div>
+
+            <!-- Dataset Selector Tabs -->
+            <div class="tab-container" role="tablist" aria-label="Dataset Selection">
+                <button type="button" class="tab-btn active" id="tabEvents" role="tab" aria-selected="true" data-dataset="events">
+                    <span class="tab-icon">&#128197;</span> Campus Events (16)
+                </button>
+                <button type="button" class="tab-btn" id="tabStudents" role="tab" aria-selected="false" data-dataset="students">
+                    <span class="tab-icon">&#128101;</span> Student Directory (18)
+                </button>
+                <button type="button" class="tab-btn" id="tabFaqs" role="tab" aria-selected="false" data-dataset="faqs">
+                    <span class="tab-icon">&#10067;</span> Portal FAQs (16)
+                </button>
+            </div>
+
+            <!-- Controls Toolbar (Search, Filter, Sort, Page Size) -->
+            <section class="toolbar-section" aria-label="Search and Filter Controls">
+                <!-- Search Box -->
+                <div class="control-group search-group">
+                    <label for="searchInput">Search Records</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">&#128269;</span>
+                        <input type="text" id="searchInput" placeholder="Search by name, title, keywords..." aria-label="Search records">
+                        <button type="button" id="clearSearchBtn" class="clear-btn" aria-label="Clear search query" hidden>&times;</button>
+                    </div>
+                </div>
+
+                <!-- Category / Department Filter -->
+                <div class="control-group filter-group">
+                    <label for="categoryFilter" id="filterLabel">Category Filter</label>
+                    <div class="input-wrapper">
+                        <select id="categoryFilter" aria-labelledby="filterLabel">
+                            <option value="ALL">All Categories</option>
+                            <!-- Dynamically populated based on active dataset -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Sort Order -->
+                <div class="control-group sort-group">
+                    <label for="sortSelect">Sort Order</label>
+                    <div class="input-wrapper">
+                        <select id="sortSelect" aria-label="Sort order">
+                            <option value="default">Default Order</option>
+                            <option value="title-asc">Title / Name (A &rarr; Z)</option>
+                            <option value="title-desc">Title / Name (Z &rarr; A)</option>
+                            <option value="metric-desc">Date / CGPA (Highest First)</option>
+                            <option value="metric-asc">Date / CGPA (Lowest First)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Items Per Page -->
+                <div class="control-group limit-group">
+                    <label for="pageSizeSelect">Show Per Page</label>
+                    <div class="input-wrapper">
+                        <select id="pageSizeSelect" aria-label="Records per page">
+                            <option value="6" selected>6 items</option>
+                            <option value="9">9 items</option>
+                            <option value="12">12 items</option>
+                            <option value="20">All items</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Meta Bar & Cache Status -->
+            <div class="results-meta">
+                <span id="resultsCountText" class="results-count">Loading dataset...</span>
+                <div class="meta-badges">
+                    <span id="cacheBadge" class="cache-badge" title="Response cached in browser memory">&#9889; Live Fetch</span>
+                    <button type="button" id="btnRefresh" class="btn-refresh" title="Reload fresh JSON from server">&#8635; Refresh</button>
+                </div>
+            </div>
+
+            <!-- Loading State (Skeleton Grid) -->
+            <div id="loadingState" class="skeleton-grid" aria-hidden="true" hidden>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+            </div>
+
+            <!-- Error State -->
+            <div id="errorState" class="alert-box error-alert" role="alert" hidden>
+                <div class="alert-icon">&#9888;</div>
+                <div class="alert-content">
+                    <h3>Failed to Fetch Dataset</h3>
+                    <p id="errorMessage">Unable to retrieve JSON data from server. Please check file path or server status.</p>
+                    <button type="button" id="btnRetryFetch" class="btn btn-sm btn-outline">Retry Request</button>
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="alert-box empty-alert" role="status" hidden>
+                <div class="empty-icon">&#128269;</div>
+                <h3>No Matching Records Found</h3>
+                <p>No results matched your search keyword or selected category filter. Try clearing filters or using different terms.</p>
+                <button type="button" id="btnResetFilters" class="btn btn-sm btn-primary">Reset Search &amp; Filters</button>
+            </div>
+
+            <!-- Dynamic Data Grid -->
+            <section id="dataGrid" class="data-grid" aria-live="polite">
+                <!-- Cards rendered dynamically via script.js -->
+            </section>
+
+            <!-- Pagination Bar -->
+            <nav id="paginationNav" class="pagination-container" aria-label="Page navigation" hidden>
+                <button type="button" id="btnPrevPage" class="page-btn" aria-label="Previous page">&laquo; Prev</button>
+                <div id="pageNumbersContainer" class="page-numbers">
+                    <!-- Page numbered buttons inserted here -->
+                </div>
+                <button type="button" id="btnNextPage" class="page-btn" aria-label="Next page">Next &raquo;</button>
+            </nav>
+
+            <!-- Optional Extension: Dependent Filter Demo -->
+            <div class="extension-card">
+                <h3>Dependent Dropdown Filter Demonstration</h3>
+                <p class="extension-desc">Select an engineering department to dynamically populate and filter its specialized courses.</p>
+                <div class="dependent-controls">
+                    <div class="dept-col">
+                        <label for="deptSelect">1. Select Department:</label>
+                        <select id="deptSelect">
+                            <option value="">-- Choose Department --</option>
+                            <option value="CE">Computer Engineering (CE)</option>
+                            <option value="IT">Information Technology (IT)</option>
+                            <option value="AI">Artificial Intelligence (AI &amp; DS)</option>
+                            <option value="EC">Electronics &amp; Comm (EC)</option>
+                        </select>
+                    </div>
+                    <div class="dept-col">
+                        <label for="specSelect">2. Dependent Specialization Track:</label>
+                        <select id="specSelect" disabled>
+                            <option value="">-- Select department first --</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="dependentResult" class="dependent-result" hidden></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 StudentHub &bull; Charotar University of Science and Technology (CHARUSAT)</p>
+            <p>Faculty of Technology and Engineering (FTE) &bull; Subject: ITUE203 Web Development Frameworks</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

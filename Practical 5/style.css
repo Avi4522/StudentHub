@@ -1,0 +1,599 @@
+/* ==========================================================================
+   StudentHub - Practical 5: Registration Form & Frontend Validation
+   Styles for Inputs, Strength Meters, Error Hints, and Success Badges
+   ========================================================================== */
+
+:root {
+    --brand-primary: #0c4f45;
+    --brand-primary-hover: #083831;
+    --brand-accent: #198754;
+    --brand-light: #e8f5f1;
+    
+    --bg-page: #f6f6f1;
+    --bg-surface: #ffffff;
+    --bg-surface-alt: #f8fafc;
+    
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --text-muted: #6b7280;
+    
+    --border-color: #cbd5e1;
+    --border-focus: #0c4f45;
+    
+    --color-error: #dc2626;
+    --bg-error: #fef2f2;
+    --border-error: #f87171;
+    
+    --color-success: #16a34a;
+    --bg-success: #f0fdf4;
+    --border-success: #86efac;
+    
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 14px rgba(12, 79, 69, 0.08);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------
+   Site Header
+   -------------------------------------------------------------------------- */
+.site-header {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.header-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--brand-primary);
+}
+
+.logo-icon {
+    font-size: 28px;
+}
+
+.header-badges {
+    display: flex;
+    gap: 8px;
+}
+
+.badge {
+    background-color: var(--brand-light);
+    color: var(--brand-primary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.badge-accent {
+    background-color: #e0f2fe;
+    color: #0369a1;
+}
+
+/* --------------------------------------------------------------------------
+   Registration Wrapper & Container
+   -------------------------------------------------------------------------- */
+.main-wrapper {
+    flex: 1;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.registration-container {
+    width: 100%;
+    max-width: 860px;
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    padding: 40px;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.subheading {
+    display: inline-block;
+    color: var(--brand-primary);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.form-header h1 {
+    font-size: 32px;
+    color: var(--brand-primary);
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    color: var(--text-secondary);
+    font-size: 15px;
+}
+
+/* --------------------------------------------------------------------------
+   Success Card (Client-side demonstration banner)
+   -------------------------------------------------------------------------- */
+.success-card {
+    background-color: var(--bg-success);
+    border: 1px solid var(--border-success);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    margin-bottom: 32px;
+    display: flex;
+    gap: 16px;
+    box-shadow: var(--shadow-sm);
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.success-icon {
+    font-size: 32px;
+    color: var(--color-success);
+    line-height: 1;
+}
+
+.success-details h3 {
+    color: #15803d;
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.success-details p {
+    color: #166534;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.submitted-summary {
+    background: #ffffff;
+    border: 1px solid #bbf7d0;
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: #1e293b;
+    line-height: 1.6;
+}
+
+.note-text {
+    display: block;
+    color: #15803d;
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   Form Grid & Fields
+   -------------------------------------------------------------------------- */
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.required {
+    color: var(--color-error);
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    color: var(--text-muted);
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.input-wrapper input,
+.input-wrapper select {
+    width: 100%;
+    padding: 12px 14px 12px 42px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    color: var(--text-primary);
+    background-color: #ffffff;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.input-wrapper select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+    cursor: pointer;
+}
+
+.input-wrapper input:focus,
+.input-wrapper select:focus {
+    outline: none;
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(12, 79, 69, 0.15);
+}
+
+/* Validation Feedback States */
+.form-group.has-error input,
+.form-group.has-error select {
+    border-color: var(--border-error);
+    background-color: var(--bg-error);
+}
+
+.form-group.has-error input:focus,
+.form-group.has-error select:focus {
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
+.form-group.is-valid input,
+.form-group.is-valid select {
+    border-color: var(--border-success);
+}
+
+.error-message {
+    color: var(--color-error);
+    font-size: 12px;
+    margin-top: 5px;
+    min-height: 16px;
+    font-weight: 500;
+}
+
+.visibility-btn {
+    position: absolute;
+    right: 12px;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--text-muted);
+    padding: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   Gender Radio Group & Fieldset
+   -------------------------------------------------------------------------- */
+.radio-fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.radio-fieldset legend {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    padding-top: 8px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.radio-label input[type="radio"] {
+    accent-color: var(--brand-primary);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   Password Strength Meter & Rules
+   -------------------------------------------------------------------------- */
+.strength-meter-container {
+    margin-top: 8px;
+}
+
+.strength-bar-track {
+    width: 100%;
+    height: 6px;
+    background-color: #e2e8f0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.strength-bar-fill {
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease, background-color 0.3s ease;
+    border-radius: 3px;
+}
+
+.strength-text {
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 4px;
+    display: block;
+    color: var(--text-muted);
+}
+
+.password-rules-list {
+    list-style: none;
+    margin-top: 10px;
+    background-color: var(--bg-surface-alt);
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.rule-item {
+    font-size: 12px;
+    color: var(--text-muted);
+    transition: color 0.2s;
+}
+
+.rule-item.valid {
+    color: var(--color-success);
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Checkbox (Terms & Conditions)
+   -------------------------------------------------------------------------- */
+.checkbox-group {
+    padding: 10px 0;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    accent-color: var(--brand-primary);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.checkbox-label a {
+    color: var(--brand-primary);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Action Buttons
+   -------------------------------------------------------------------------- */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 10px;
+    padding-top: 24px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: var(--brand-primary);
+    color: #ffffff;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+    background-color: var(--brand-primary-hover);
+    box-shadow: 0 4px 12px rgba(12, 79, 69, 0.25);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-outline:hover {
+    background-color: #f1f5f9;
+    color: var(--text-primary);
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 13px;
+}
+
+/* --------------------------------------------------------------------------
+   Terms Modal
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-box {
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    max-width: 500px;
+    width: 90%;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 18px;
+    color: var(--brand-primary);
+}
+
+.modal-close {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+.modal-body {
+    padding: 20px 24px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.modal-body ol {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.modal-body li {
+    margin-bottom: 6px;
+}
+
+.modal-footer {
+    padding: 14px 24px;
+    background-color: #f8fafc;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+.site-footer {
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    padding: 24px 20px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Design
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .registration-container {
+        padding: 24px 16px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StudentHub - Practical 5: Registration Form with Frontend Validation and Error Handling">
+    <title>StudentHub - Practical 5: Student Registration Form &amp; Validation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">&#127891;</span>
+                <span>Student Hub</span>
+            </a>
+            <div class="header-badges">
+                <span class="badge">Practical 5</span>
+                <span class="badge badge-accent">ITUE203</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Registration Section -->
+    <main class="main-wrapper">
+        <div class="registration-container">
+            <!-- Form Header -->
+            <div class="form-header">
+                <span class="subheading">CHARUSAT &bull; Faculty of Technology and Engineering</span>
+                <h1>Student Portal Registration</h1>
+                <p>Create your student account to access course schedules, lab materials, fee status, and campus events.</p>
+            </div>
+
+            <!-- Demonstration Success Card (Revealed upon valid submission) -->
+            <div id="successCard" class="success-card" role="alert" aria-live="polite" hidden>
+                <div class="success-icon">&#10004;</div>
+                <div class="success-details">
+                    <h3>Registration Validation Successful!</h3>
+                    <p>All client-side validation rules and regular expressions passed successfully.</p>
+                    <div id="submittedSummary" class="submitted-summary"></div>
+                    <small class="note-text">* Note: This is a client-side demonstration (Practical 5). No password or sensitive data was saved to a database.</small>
+                    <button type="button" id="btnRegisterAnother" class="btn btn-outline btn-sm">Register Another Student</button>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <form id="studentRegistrationForm" class="registration-form" novalidate>
+                <!-- Row 1: Full Name & Email -->
+                <div class="form-row">
+                    <div class="form-group" id="groupFullName">
+                        <label for="fullName">Full Name <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">&#128100;</span>
+                            <input 
+                                type="text" 
+                                id="fullName" 
+                                name="fullName" 
+                                placeholder="e.g., Avi Beladiya" 
+                                required 
+                                autocomplete="name"
+                                aria-describedby="fullNameError"
+                            >
+                        </div>
+                        <span id="fullNameError" class="error-message" role="alert"></span>
+                    </div>
+
+                    <div class="form-group" id="groupEmail">
+                        <label for="email">CHARUSAT / Personal Email <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">&#9993;</span>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="e.g., 25dce007@charusat.edu.in" 
+                                required 
+                                autocomplete="email"
+                                aria-describedby="emailError"
+                            >
+                        </div>
+                        <span id="emailError" class="error-message" role="alert"></span>
+                    </div>
+                </div>
+
+                <!-- Row 2: Mobile Number & Gender -->
+                <div class="form-row">
+                    <div class="form-group" id="groupMobile">
+                        <label for="mobile">Mobile Number (10 digits) <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">&#128222;</span>
+                            <input 
+                                type="tel" 
+                                id="mobile" 
+                                name="mobile" 
+                                placeholder="e.g., 9876543210" 
+                                maxlength="10" 
+                                required 
+                                autocomplete="tel"
+                                aria-describedby="mobileError"
+                            >
+                        </div>
+                        <span id="mobileError" class="error-message" role="alert"></span>
+                    </div>
+
+                    <div class="form-group" id="groupGender">
+                        <fieldset class="radio-fieldset">
+                            <legend>Gender <span class="required">*</span></legend>
+                            <div class="radio-group" role="radiogroup" aria-describedby="genderError">
+                                <label class="radio-label">
+                                    <input type="radio" name="gender" value="Male" required>
+                                    <span>Male</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="gender" value="Female">
+                                    <span>Female</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="gender" value="Other">
+                                    <span>Other</span>
+                                </label>
+                            </div>
+                        </fieldset>
+                        <span id="genderError" class="error-message" role="alert"></span>
+                    </div>
+                </div>
+
+                <!-- Row 3: Course & Academic Year -->
+                <div class="form-row">
+                    <div class="form-group" id="groupCourse">
+                        <label for="course">Engineering Program / Course <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">&#128218;</span>
+                            <select id="course" name="course" required aria-describedby="courseError">
+                                <option value="" disabled selected>Select your engineering branch</option>
+                                <option value="B.Tech Computer Engineering (CE)">B.Tech Computer Engineering (CE)</option>
+                                <option value="B.Tech Information Technology (IT)">B.Tech Information Technology (IT)</option>
+                                <option value="B.Tech Computer Science &amp; Eng (CSE)">B.Tech Computer Science &amp; Eng (CSE)</option>
+                                <option value="B.Tech Artificial Intelligence &amp; Data Science">B.Tech AI &amp; Data Science</option>
+                                <option value="B.Tech Electronics &amp; Communication (EC)">B.Tech Electronics &amp; Comm (EC)</option>
+                                <option value="B.Tech Mechanical Engineering">B.Tech Mechanical Engineering</option>
+                                <option value="B.Tech Civil Engineering">B.Tech Civil Engineering</option>
+                            </select>
+                        </div>
+                        <span id="courseError" class="error-message" role="alert"></span>
+                    </div>
+
+                    <div class="form-group" id="groupYear">
+                        <label for="academicYear">Current Academic Year <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">&#128197;</span>
+                            <select id="academicYear" name="academicYear" required aria-describedby="academicYearError">
+                                <option value="" disabled selected>Select academic year</option>
+                                <option value="1st Year (Semester 1 - 2)">1st Year (Semester 1 - 2)</option>
+                                <option value="2nd Year (Semester 3 - 4)">2nd Year (Semester 3 - 4)</option>
+                                <option value="3rd Year (Semester 5 - 6)">3rd Year (Semester 5 - 6)</option>
+                                <option value="4th Year (Semester 7 - 8)">4th Year (Semester 7 - 8)</option>
+                            </select>
+                        </div>
+                        <span id="academicYearError" class="error-message" role="alert"></span>
+                    </div>
+                </div>
+
+                <!-- Row 4: Password & Confirm Password -->
+                <div class="form-row">
+                    <div class="form-group" id="groupPassword">
+                        <label for="password">Create Password <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">&#128274;</span>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                placeholder="Min 8 chars, 1 uppercase, 1 symbol" 
+                                required 
+                                autocomplete="new-password"
+                                aria-describedby="passwordError passwordRules"
+                            >
+                            <button type="button" id="togglePasswordBtn" class="visibility-btn" aria-label="Toggle password visibility">&#128065;</button>
+                        </div>
+                        
+                        <!-- Password Strength Meter -->
+                        <div class="strength-meter-container">
+                            <div class="strength-bar-track">
+                                <div id="strengthBar" class="strength-bar-fill"></div>
+                            </div>
+                            <span id="strengthText" class="strength-text">Password Strength: None</span>
+                        </div>
+
+                        <!-- Rule Checklist -->
+                        <ul id="passwordRules" class="password-rules-list">
+                            <li id="ruleLength" class="rule-item">&#9675; At least 8 characters</li>
+                            <li id="ruleUpper" class="rule-item">&#9675; At least one uppercase letter (A-Z)</li>
+                            <li id="ruleLower" class="rule-item">&#9675; At least one lowercase letter (a-z)</li>
+                            <li id="ruleNumber" class="rule-item">&#9675; At least one number (0-9)</li>
+                            <li id="ruleSpecial" class="rule-item">&#9675; At least one special symbol (!@#$%^&amp;*)</li>
+                        </ul>
+                        <span id="passwordError" class="error-message" role="alert"></span>
+                    </div>
+
+                    <div class="form-group" id="groupConfirmPassword">
+                        <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">&#128274;</span>
+                            <input 
+                                type="password" 
+                                id="confirmPassword" 
+                                name="confirmPassword" 
+                                placeholder="Re-enter your password" 
+                                required 
+                                autocomplete="new-password"
+                                aria-describedby="confirmPasswordError"
+                            >
+                            <button type="button" id="toggleConfirmPasswordBtn" class="visibility-btn" aria-label="Toggle confirm password visibility">&#128065;</button>
+                        </div>
+                        <span id="confirmPasswordError" class="error-message" role="alert"></span>
+                    </div>
+                </div>
+
+                <!-- Terms and Conditions Checkbox -->
+                <div class="form-group checkbox-group" id="groupTerms">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="terms" name="terms" required aria-describedby="termsError">
+                        <span>I accept the <a href="#termsModal" id="viewTermsLink">StudentHub Code of Conduct</a> and Academic Regulations.</span>
+                    </label>
+                    <span id="termsError" class="error-message" role="alert"></span>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="form-actions">
+                    <button type="reset" id="resetBtn" class="btn btn-outline">Reset Form</button>
+                    <button type="submit" id="submitBtn" class="btn btn-primary">Complete Student Registration</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Modal for Terms and Conditions -->
+    <div id="termsModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="termsTitle" hidden>
+        <div class="modal-box">
+            <header class="modal-header">
+                <h3 id="termsTitle">StudentHub Terms &amp; Academic Code of Conduct</h3>
+                <button type="button" id="closeTermsBtn" class="modal-close" aria-label="Close dialog">&times;</button>
+            </header>
+            <div class="modal-body">
+                <p>By registering on the CHARUSAT StudentHub portal, you agree to:</p>
+                <ol>
+                    <li>Provide truthful personal and academic enrollment credentials.</li>
+                    <li>Safeguard your authentication credentials and notify administrators of unauthorized usage.</li>
+                    <li>Refrain from reverse-engineering, crawling, or attacking portal APIs.</li>
+                    <li>Comply with university IT usage guidelines and intellectual property policies.</li>
+                </ol>
+            </div>
+            <footer class="modal-footer">
+                <button type="button" id="acceptTermsModalBtn" class="btn btn-primary btn-sm">I Understand &amp; Agree</button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 StudentHub &bull; Charotar University of Science and Technology (CHARUSAT)</p>
+            <p>Faculty of Technology and Engineering (FTE) &bull; Subject: ITUE203 Web Development Frameworks</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

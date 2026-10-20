@@ -1,0 +1,178 @@
+[
+  {
+    "id": 1,
+    "title": "CHARUSAT National Tech Expo 2026",
+    "category": "Technical",
+    "date": "2026-11-15",
+    "venue": "Central Auditorium, Changa",
+    "organizer": "Department of Computer Engineering",
+    "capacity": 350,
+    "status": "Upcoming",
+    "description": "Annual university exhibition showcasing AI models, IoT hardware prototypes, embedded robotics, and software engineering capstones."
+  },
+  {
+    "id": 2,
+    "title": "DevForge 36-Hour Hackathon",
+    "category": "Technical",
+    "date": "2026-12-02",
+    "venue": "IT & CE Computer Lab Complex 3",
+    "organizer": "StudentHub Developer Club",
+    "capacity": 120,
+    "status": "Upcoming",
+    "description": "Intensive team hackathon challenging students to build full-stack web and mobile applications solving community and campus challenges."
+  },
+  {
+    "id": 3,
+    "title": "Annual Inter-College Sports Meet: Spoural",
+    "category": "Sports",
+    "date": "2027-01-18",
+    "venue": "University Athletic Grounds",
+    "organizer": "FTE Sports Committee",
+    "capacity": 500,
+    "status": "Upcoming",
+    "description": "Competitive inter-department tournament featuring cricket, football, volleyball, badminton, table tennis, and track events."
+  },
+  {
+    "id": 4,
+    "title": "International Conference on Cloud & DevOps",
+    "category": "Seminar",
+    "date": "2027-02-05",
+    "venue": "Seminar Hall A, CSPIT Building",
+    "organizer": "IEEE Student Branch",
+    "capacity": 200,
+    "status": "Upcoming",
+    "description": "Keynote lectures by cloud architects and industry leaders on microservices, Kubernetes orchestration, and continuous deployment pipelines."
+  },
+  {
+    "id": 5,
+    "title": "Full-Stack Web Development Workshop",
+    "category": "Workshop",
+    "date": "2026-10-25",
+    "venue": "Software Lab 4",
+    "organizer": "Web Development Cell",
+    "capacity": 60,
+    "status": "Open",
+    "description": "Hands-on masterclass covering modern JavaScript ES6+, PHP 8 backend REST APIs, MySQL PDO prepared statements, and async Fetch integrations."
+  },
+  {
+    "id": 6,
+    "title": "Spoural Cultural Night & Folk Dance Fest",
+    "category": "Cultural",
+    "date": "2027-01-20",
+    "venue": "Open Air Amphitheatre",
+    "organizer": "Cultural Affairs Committee",
+    "capacity": 800,
+    "status": "Upcoming",
+    "description": "A vibrant celebration of regional folk traditions, classical music, theatrical drama, and western group dance performances."
+  },
+  {
+    "id": 7,
+    "title": "Cybersecurity & Ethical Hacking Bootcamp",
+    "category": "Workshop",
+    "date": "2026-11-28",
+    "venue": "Cyber Security Research Lab",
+    "organizer": "Department of IT",
+    "capacity": 75,
+    "status": "Open",
+    "description": "Practical exploration of vulnerability assessment, SQL injection mitigation, network packet analysis with Wireshark, and defensive cryptography."
+  },
+  {
+    "id": 8,
+    "title": "Machine Learning in Healthcare Symposium",
+    "category": "Seminar",
+    "date": "2027-03-10",
+    "venue": "DEPSTAR Auditorium",
+    "organizer": "AI & Data Science Cell",
+    "capacity": 180,
+    "status": "Upcoming",
+    "description": "Insights into deep learning algorithms for medical imaging diagnosis, genomic sequencing, and predictive electronic health records."
+  },
+  {
+    "id": 9,
+    "title": "Annual Robotics Battle: RoboWar 2026",
+    "category": "Technical",
+    "date": "2026-12-14",
+    "venue": "Mechanical Workshop Arena",
+    "organizer": "Mechatronics Club",
+    "capacity": 250,
+    "status": "Upcoming",
+    "description": "Fast-paced combat robotics competition testing RC chassis strength, pneumatic weapons, obstacle evasion, and tactical maneuvering."
+  },
+  {
+    "id": 10,
+    "title": "Alumni Career Mentorship & Placement Talk",
+    "category": "Seminar",
+    "date": "2026-10-30",
+    "venue": "Virtual Stream & Seminar Hall B",
+    "organizer": "FTE Training & Placement Cell",
+    "capacity": 300,
+    "status": "Open",
+    "description": "CHARUSAT alumni working in Fortune 500 tech companies share strategies for technical interviews, DSA preparation, and resume building."
+  },
+  {
+    "id": 11,
+    "title": "Campus Photography & Short Film Showcase",
+    "category": "Cultural",
+    "date": "2026-11-20",
+    "venue": "Media Center Screening Room",
+    "organizer": "Fine Arts Guild",
+    "capacity": 90,
+    "status": "Upcoming",
+    "description": "Exhibition of student cinematography, documentary shorts, architectural campus photography, and digital art portfolios."
+  },
+  {
+    "id": 12,
+    "title": "IoT & Smart Home Automation Hands-on",
+    "category": "Workshop",
+    "date": "2027-02-18",
+    "venue": "Embedded Systems Lab",
+    "organizer": "Department of EC",
+    "capacity": 50,
+    "status": "Upcoming",
+    "description": "Assemble ESP32 and Raspberry Pi sensor nodes, configure MQTT communication brokers, and control household appliances via a cloud dashboard."
+  },
+  {
+    "id": 13,
+    "title": "Inter-Department Chess Championship",
+    "category": "Sports",
+    "date": "2026-11-08",
+    "venue": "Indoor Sports Complex",
+    "organizer": "University Chess Guild",
+    "capacity": 64,
+    "status": "Closed",
+    "description": "FIDE-rated rapid and blitz tournament open to undergraduate and postgraduate students from all engineering institutes."
+  },
+  {
+    "id": 14,
+    "title": "Android & Flutter App Development Camp",
+    "category": "Workshop",
+    "date": "2027-01-10",
+    "venue": "Mobile Computing Lab",
+    "organizer": "Google Developer Student Club (GDSC)",
+    "capacity": 80,
+    "status": "Upcoming",
+    "description": "Cross-platform mobile application development using Dart and Flutter, integrating Firebase authentication and real-time Firestore database."
+  },
+  {
+    "id": 15,
+    "title": "Research Paper Writing & LaTeX Masterclass",
+    "category": "Seminar",
+    "date": "2026-12-18",
+    "venue": "Postgraduate Reading Room",
+    "organizer": "University Research Council",
+    "capacity": 100,
+    "status": "Upcoming",
+    "description": "Guidance on literature reviews, IEEE conference manuscript formatting using LaTeX, bibliography management with BibTeX, and publication ethics."
+  },
+  {
+    "id": 16,
+    "title": "Campus Green Energy & Sustainability Forum",
+    "category": "Seminar",
+    "date": "2027-03-22",
+    "venue": "Renewable Energy Research Park",
+    "organizer": "Civil & Environmental Engineering",
+    "capacity": 140,
+    "status": "Upcoming",
+    "description": "Panel discussions exploring campus solar micro-grids, rainwater harvesting innovations, zero-carbon engineering, and environmental stewardship."
+  }
+]

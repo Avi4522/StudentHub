@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StudentHub - Practical 4: JavaScript DOM Manipulation and UI Interactivity">
+    <title>StudentHub - Practical 4: DOM Manipulation &amp; Interactivity</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="light">
+
+    <!-- Dismissible Notification Banner -->
+    <div id="notificationBanner" class="notification-banner" role="region" aria-label="Campus Announcement">
+        <div class="banner-content">
+            <span class="banner-badge">Notice</span>
+            <p id="bannerText">Welcome to StudentHub! Semester 3 examination timetable and registration forms are now live.</p>
+        </div>
+        <button id="closeBannerBtn" class="banner-close-btn" aria-label="Dismiss notification">&times;</button>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">&#127891;</span>
+                <span>Student Hub</span>
+            </a>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button id="hamburgerBtn" class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+
+            <!-- Navigation Links & Theme Switcher -->
+            <nav id="primaryNav" class="nav-menu" aria-label="Main Navigation">
+                <ul class="nav-list">
+                    <li><a href="#slider-section" class="nav-link">Highlights</a></li>
+                    <li><a href="#modal-section" class="nav-link">Modal Demo</a></li>
+                    <li><a href="#faq-section" class="nav-link">FAQ</a></li>
+                    <li><a href="#dom-playground" class="nav-link">DOM Playground</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle light and dark mode" title="Toggle Theme">
+                        <span id="themeIcon" class="theme-icon">&#9790;</span>
+                        <span id="themeLabel" class="theme-label">Dark Mode</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <span class="practical-tag">Practical 4 &bull; ITUE203 Web Development Frameworks</span>
+                <h1 class="hero-title">JavaScript DOM Manipulation &amp; UI Interactivity</h1>
+                <p class="hero-subtitle">
+                    Demonstrating client-side event listeners, DOM element selection, class list manipulation,
+                    accessible modals, interactive accordions, dynamic sliders, and localStorage theme persistence.
+                </p>
+                <div class="hero-buttons">
+                    <button id="openModalBtn" class="btn btn-primary" aria-haspopup="dialog">&#9881; Open Interactive Modal</button>
+                    <a href="#faq-section" class="btn btn-outline">&#10067; View Collapsible FAQs</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image & Content Slider Section -->
+        <section id="slider-section" class="section">
+            <div class="section-header">
+                <h2>Campus Highlights Slider</h2>
+                <p>Interactive carousel built with pure JavaScript DOM traversal, indicator dots, and keyboard navigation.</p>
+            </div>
+
+            <div class="slider-wrapper" aria-roledescription="carousel" aria-label="Campus Highlights">
+                <div class="slider-track" id="sliderTrack">
+                    <!-- Slide 1 -->
+                    <article class="slide active" aria-roledescription="slide" aria-label="1 of 4">
+                        <div class="slide-card slide-tech">
+                            <div class="slide-content">
+                                <span class="slide-badge">Academic Excellence</span>
+                                <h3>CHARUSAT Tech Expo 2026</h3>
+                                <p>Annual university showcase featuring cutting-edge AI innovations, cloud solutions, and competitive robotics presentations.</p>
+                                <span class="slide-meta">Date: November 15, 2026 &bull; Central Auditorium</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Slide 2 -->
+                    <article class="slide" aria-roledescription="slide" aria-label="2 of 4">
+                        <div class="slide-card slide-hackathon">
+                            <div class="slide-content">
+                                <span class="slide-badge">Hackathon</span>
+                                <h3>36-Hour Hackathon: DevForge</h3>
+                                <p>Build real-world full-stack web applications, collaborate with peers, and compete for exciting prizes and mentorship.</p>
+                                <span class="slide-meta">Date: December 02, 2026 &bull; Lab Complex 3</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Slide 3 -->
+                    <article class="slide" aria-roledescription="slide" aria-label="3 of 4">
+                        <div class="slide-card slide-cultural">
+                            <div class="slide-content">
+                                <span class="slide-badge">Campus Life</span>
+                                <h3>Spoural &amp; Cultural Fest</h3>
+                                <p>Celebrate diversity with music, theater, arts, and cultural competitions across all engineering departments.</p>
+                                <span class="slide-meta">Date: January 20, 2027 &bull; University Grounds</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Slide 4 -->
+                    <article class="slide" aria-roledescription="slide" aria-label="4 of 4">
+                        <div class="slide-card slide-career">
+                            <div class="slide-content">
+                                <span class="slide-badge">Placement Drive</span>
+                                <h3>Industry Connect &amp; Internships</h3>
+                                <p>Interact with top technology employers, participate in mock interviews, and secure internship placements.</p>
+                                <span class="slide-meta">Date: February 10, 2027 &bull; FTE Placement Cell</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Slider Controls -->
+                <button id="prevSlideBtn" class="slider-arrow prev" aria-label="Previous Slide">&#10094;</button>
+                <button id="nextSlideBtn" class="slider-arrow next" aria-label="Next Slide">&#10095;</button>
+
+                <!-- Indicator Dots -->
+                <div class="slider-dots" id="sliderDots" role="tablist" aria-label="Slide indicators">
+                    <!-- Dots dynamically activated via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Collapsible FAQ Section -->
+        <section id="faq-section" class="section">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Accessible accordion with dynamic height transition, ARIA states, and single/multiple expand behavior.</p>
+            </div>
+
+            <div class="faq-accordion" id="faqAccordion">
+                <!-- Item 1 -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" id="faq-btn-1" aria-controls="faq-ans-1">
+                        <span>How is user theme preference retained across page reloads?</span>
+                        <span class="faq-chevron">&#9662;</span>
+                    </button>
+                    <div class="faq-answer" id="faq-ans-1" role="region" aria-labelledby="faq-btn-1" hidden>
+                        <p>
+                            The chosen theme ('light' or 'dark') is saved to the browser's <code>localStorage</code> API using
+                            <code>localStorage.setItem('studenthub_theme', theme)</code>. When the DOM loads, an initial script reads this value
+                            and sets the <code>data-theme</code> attribute on the <code>&lt;body&gt;</code> before user interaction occurs.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" id="faq-btn-2" aria-controls="faq-ans-2">
+                        <span>What event listeners and methods are used in this practical?</span>
+                        <span class="faq-chevron">&#9662;</span>
+                    </button>
+                    <div class="faq-answer" id="faq-ans-2" role="region" aria-labelledby="faq-btn-2" hidden>
+                        <p>
+                            We attach standard ES6 event listeners with <code>addEventListener('click', handler)</code> and <code>addEventListener('keydown', handler)</code>.
+                            DOM nodes are selected using <code>document.getElementById()</code>, <code>document.querySelector()</code>, and
+                            <code>document.querySelectorAll()</code>. Classes are toggled using <code>classList.toggle()</code>, <code>classList.add()</code>, and <code>classList.remove()</code>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" id="faq-btn-3" aria-controls="faq-ans-3">
+                        <span>How does the modal handle keyboard navigation and accessibility?</span>
+                        <span class="faq-chevron">&#9662;</span>
+                    </button>
+                    <div class="faq-answer" id="faq-ans-3" role="region" aria-labelledby="faq-btn-3" hidden>
+                        <p>
+                            The modal dialog has <code>role="dialog"</code> and <code>aria-modal="true"</code>. When opened, focus shifts to the modal close button.
+                            Pressing the <kbd>Escape</kbd> key closes the modal immediately. When closed, focus returns gracefully to the trigger element that opened it.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" id="faq-btn-4" aria-controls="faq-ans-4">
+                        <span>Why avoid inline JavaScript attributes such as onclick?</span>
+                        <span class="faq-chevron">&#9662;</span>
+                    </button>
+                    <div class="faq-answer" id="faq-ans-4" role="region" aria-labelledby="faq-btn-4" hidden>
+                        <p>
+                            Inline attributes mix HTML markup with presentation logic, violate Content Security Policy (CSP) best practices,
+                            and hinder unit testing. Using external scripts with <code>addEventListener</code> ensures clean separation of concerns and maintainable code.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive DOM Playground Section -->
+        <section id="dom-playground" class="section">
+            <div class="section-header">
+                <h2>Interactive DOM Manipulation Playground</h2>
+                <p>Live test bench for real-time text modification, CSS class toggling, and dynamic list manipulation.</p>
+            </div>
+
+            <div class="playground-grid">
+                <!-- Card 1: Text & Content Update -->
+                <div class="card">
+                    <h3>1. Dynamic Text &amp; HTML Modification</h3>
+                    <p id="targetStatusText" class="status-box">Current Status: <strong>Idle</strong></p>
+                    <div class="playground-controls">
+                        <button id="btnSetSuccess" class="btn btn-sm btn-success">Set Success State</button>
+                        <button id="btnSetWarning" class="btn btn-sm btn-warning">Set Warning State</button>
+                        <button id="btnResetStatus" class="btn btn-sm btn-outline">Reset</button>
+                    </div>
+                </div>
+
+                <!-- Card 2: Dynamic Element Creation -->
+                <div class="card">
+                    <h3>2. Dynamic Element Insertion</h3>
+                    <div class="input-inline">
+                        <input type="text" id="newSkillInput" placeholder="Enter skill or course (e.g. React, PHP)" aria-label="New Skill">
+                        <button id="btnAddSkillBtn" class="btn btn-sm btn-primary">Add Item</button>
+                    </div>
+                    <ul id="dynamicSkillList" class="dynamic-list">
+                        <li>HTML5 &amp; Semantic Web</li>
+                        <li>CSS3 Flexbox &amp; Grid</li>
+                        <li>JavaScript ES6+ &amp; DOM Manipulation</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3: Counter with Event Listeners -->
+                <div class="card">
+                    <h3>3. State Counter &amp; Attribute Mutation</h3>
+                    <div class="counter-display">
+                        <span id="counterValue" class="counter-number">0</span>
+                    </div>
+                    <div class="playground-controls">
+                        <button id="btnDecrement" class="btn btn-sm btn-outline">&minus; Decrement</button>
+                        <button id="btnResetCounter" class="btn btn-sm btn-outline">&#8634; Reset</button>
+                        <button id="btnIncrement" class="btn btn-sm btn-primary">&#43; Increment</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Accessible Modal Popup -->
+    <div id="demoModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDescription" hidden>
+        <div class="modal-card" id="modalCard">
+            <header class="modal-header">
+                <h3 id="modalTitle">&#127891; StudentHub Quick Announcement</h3>
+                <button id="closeModalBtn" class="modal-close-btn" aria-label="Close dialog">&times;</button>
+            </header>
+            <div class="modal-body" id="modalDescription">
+                <p><strong>Practical 4 Interaction Successful!</strong></p>
+                <p>This modal dialog demonstrates:</p>
+                <ul>
+                    <li>Accessible keyboard management (press <kbd>Escape</kbd> to dismiss).</li>
+                    <li>Overlay backdrop click dismissal.</li>
+                    <li>Return-focus preservation to the invoking button.</li>
+                    <li>Clean CSS opacity and scale transitions without inline styling.</li>
+                </ul>
+            </div>
+            <footer class="modal-footer">
+                <button id="modalActionBtn" class="btn btn-primary">Got it, close</button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 StudentHub &bull; Charotar University of Science and Technology (CHARUSAT)</p>
+            <p>Faculty of Technology and Engineering (FTE) &bull; Department of Computer Engineering</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

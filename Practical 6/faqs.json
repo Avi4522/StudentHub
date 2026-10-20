@@ -1,0 +1,114 @@
+[
+  {
+    "id": 1,
+    "question": "How can I check my semester attendance on the StudentHub portal?",
+    "answer": "Navigate to the Student Dashboard and select 'Attendance'. You can view aggregate percentages as well as subject-wise breakdown updated daily by faculty.",
+    "category": "Academic",
+    "tags": ["attendance", "dashboard", "academics"]
+  },
+  {
+    "id": 2,
+    "question": "What is the minimum attendance threshold required to appear for university exams?",
+    "answer": "According to CHARUSAT university regulations, students must maintain a minimum of 80% cumulative attendance in both theory lectures and practical laboratories.",
+    "category": "Examinations",
+    "tags": ["rules", "attendance", "exams"]
+  },
+  {
+    "id": 3,
+    "question": "How are continuous internal evaluation (CIE) and university exams calculated?",
+    "answer": "Evaluation is divided into 40% Continuous Internal Evaluation (quizzes, unit tests, mid-semester exams, and lab practical continuous assessment) and 60% University Theory/Practical Exam.",
+    "category": "Examinations",
+    "tags": ["grading", "evaluation", "exams"]
+  },
+  {
+    "id": 4,
+    "question": "How do I register for campus hackathons and technical symposiums?",
+    "answer": "Visit the 'Events' section on StudentHub, select your desired event, and click 'Register Event'. You will receive an instant digital QR pass on your dashboard.",
+    "category": "Events",
+    "tags": ["events", "hackathon", "registration"]
+  },
+  {
+    "id": 5,
+    "question": "What digital resources are available via the CHARUSAT Central Library?",
+    "answer": "Students have 24/7 access to IEEE Xplore, ScienceDirect, ACM Digital Library, SpringerLink, and the DELNET consortia using their university credentials.",
+    "category": "Library",
+    "tags": ["library", "ieee", "research"]
+  },
+  {
+    "id": 6,
+    "question": "Where can students verify their fee payment receipts and tuition status?",
+    "answer": "Under the 'Fee Status' module in your Student Dashboard. Download semester fee receipts, verify pending dues, and view transaction reference IDs.",
+    "category": "Finance",
+    "tags": ["fees", "receipt", "finance"]
+  },
+  {
+    "id": 7,
+    "question": "How does the training and placement cell facilitate summer internships?",
+    "answer": "The FTE Placement Cell connects 2nd and 3rd year students with verified industry partners through regular placement drives, on-campus interviews, and resume review sessions.",
+    "category": "Placement",
+    "tags": ["placement", "internship", "career"]
+  },
+  {
+    "id": 8,
+    "question": "What should I do if I discover a discrepancy in my mid-semester exam marks?",
+    "answer": "Approach your respective subject teacher within 3 working days of paper demonstration or file a grievance under the Examination section on the portal.",
+    "category": "Examinations",
+    "tags": ["discrepancy", "exams", "evaluation"]
+  },
+  {
+    "id": 9,
+    "question": "Can I access online lecture notes and practical lab manuals remotely?",
+    "answer": "Yes, all approved laboratory manuals, question banks, and lecture slides are archived in the Course Resources section for every registered subject.",
+    "category": "Academic",
+    "tags": ["resources", "materials", "notes"]
+  },
+  {
+    "id": 10,
+    "question": "How do I apply for a student railway or bus concession certificate?",
+    "answer": "Submit a concession request through StudentHub under 'Administrative Requests'. Once verified by the department office, an authorized pass is issued within 48 hours.",
+    "category": "Administration",
+    "tags": ["concession", "travel", "admin"]
+  },
+  {
+    "id": 11,
+    "question": "What is the procedure to issue or renew physical library books?",
+    "answer": "Scan your digital student ID card at the RFID self-checkout kiosk in the central library. Up to 4 books can be issued concurrently for a 14-day renewable loan period.",
+    "category": "Library",
+    "tags": ["library", "books", "rfid"]
+  },
+  {
+    "id": 12,
+    "question": "Are there hostel facilities and Wi-Fi networks available on campus?",
+    "answer": "Yes, high-speed 1 Gbps campus Wi-Fi covers all academic blocks, hostels, and libraries. Hostel students authenticate via their CHARUSAT single sign-on (SSO).",
+    "category": "Campus Facilities",
+    "tags": ["hostel", "wifi", "facilities"]
+  },
+  {
+    "id": 13,
+    "question": "How can I join student clubs such as GDSC, Robotics, or Rotaract?",
+    "answer": "Club orientation drives take place during the first month of the academic semester. Registration links and audition schedules are announced on the portal notices.",
+    "category": "Events",
+    "tags": ["clubs", "gdsc", "activities"]
+  },
+  {
+    "id": 14,
+    "question": "What grading system is followed for SGPA and CGPA computation?",
+    "answer": "CHARUSAT adheres to a 10-point credit-based grading scale: AA (10), AB (9), BB (8), BC (7), CC (6), CD (5), DD (4), and FF (Fail, 0).",
+    "category": "Examinations",
+    "tags": ["sgpa", "cgpa", "grading"]
+  },
+  {
+    "id": 15,
+    "question": "How are project lab evaluations conducted for Web Development Frameworks?",
+    "answer": "Practical evaluation consists of weekly continuous code reviews, viva questions, git commit tracking, and an end-semester practical demonstration.",
+    "category": "Academic",
+    "tags": ["wdf", "practicals", "itue203"]
+  },
+  {
+    "id": 16,
+    "question": "Whom should I contact in case of login or technical portal difficulties?",
+    "answer": "Contact the IT Cell helpdesk via email at studenthub-support@charusat.edu.in or visit Computer Center Room 204 during working hours.",
+    "category": "Administration",
+    "tags": ["support", "helpdesk", "login"]
+  }
+]
